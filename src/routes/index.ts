@@ -4,11 +4,13 @@ import { addBooks } from '../controllers/books-controller/create-books/createBoo
 import { updateBook } from '../controllers/books-controller/update-books/updateBooks';
 import { deleteBook } from '../controllers/books-controller/delete-book/deleteBooks';
 import { getOneBook } from '../controllers/books-controller/get-one-books/getOneBooks';
+import { getOnePublisher } from '../controllers/books-controller/get-one-publisher/getOnePublisher';
 
 const router = Router();
-
+router.get('/livros/busca', getOnePublisher);
 router.get('/livros', getBooks);
 router.post('/livros', addBooks);
+
 router.put('/livros/:id', updateBook);
 router.delete('/livros/:id', deleteBook);
 router.get('/livros/:id', getOneBook);

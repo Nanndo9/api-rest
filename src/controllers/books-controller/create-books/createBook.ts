@@ -4,13 +4,12 @@ import { Author } from '../../../models/author/author';
 
 export const addBooks = async (req: Request, res: Response) => {
     try {
-        
         const newBook = req.body;
-        const authorfound = await Author.findById(newBook.autor)
+        const authorfound = await Author.findById(newBook.autor);
         if (!authorfound) {
             return res.status(404).json({ message: 'Author not found' });
         }
-        const fullBook = {...newBook,autor:{...authorfound}}
+        const fullBook = { ...newBook, autor: { ...authorfound } };
 
         const createBook = await Books.create(fullBook);
 
