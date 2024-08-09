@@ -1,26 +1,18 @@
 import express, { Request, Response } from 'express';
-import Books from '../../models/Book';
-
+import Books from '../../../models/books/Book';
+import { Author } from '../../../models/author/author';
 
 export const addBooks = async (req: Request, res: Response) => {
     try {
-        const { titulo, editora, preco, paginas } = req.body;
-
-        if (
-            !titulo ||
-            !editora ||
-            preco === undefined ||
-            paginas === undefined
-        ) {
-            return res.json(`Please enter the fields The fields are required`);
+        
+        const newBook = req.body;
+        const authorfound = await Author.findById(newBook.autor)
+        if (!authorfound) {
+            return res.status(404).json({ message: 'Author not found' });
         }
+        const fullBook = {...newBook,autor:{...authorfound}}
 
-        const createBook = await Books.create({
-            titulo,
-            editora,
-            preco,
-            paginas,
-        });
+        const createBook = await Books.create(fullBook);
 
         res.status(201).json({
             message: 'Successfully created',

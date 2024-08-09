@@ -1,9 +1,6 @@
 import express, { Request, Response } from 'express';
-import Books from '../../models/Book';
+import Books from '../../../models/books/Book';
 import { IUpdateBook } from './protocols';
-
-
-
 
 export const updateBook = async (req: Request, res: Response) => {
     try {
