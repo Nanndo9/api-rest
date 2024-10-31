@@ -4,7 +4,7 @@ import { addAuthor } from '../controllers/author-controller/create-author/create
 import { updateAuthor } from '../controllers/author-controller/update-author/updateAuthor';
 import { deleteAuthor } from '../controllers/author-controller/delete-author/deleteAuthor';
 import { getOneAuthor } from '../controllers/author-controller/get-one-author/getOneAuthor';
-;
+
 
 const router = Router();
 

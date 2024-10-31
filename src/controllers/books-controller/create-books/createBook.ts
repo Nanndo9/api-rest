@@ -9,7 +9,7 @@ export const addBooks = async (req: Request, res: Response) => {
         if (!authorfound) {
             return res.status(404).json({ message: 'Author not found' });
         }
-        const fullBook = { ...newBook, autor: { ...authorfound } };
+         const fullBook = { ...newBook, autor: { ...authorfound } };
 
         const createBook = await Books.create(fullBook);
 

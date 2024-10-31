@@ -5,10 +5,9 @@ import mongoose from 'mongoose';
 export const getOnePublisher = async (req: Request, res: Response) => {
     try {
         const editora = req.query.editora
-        const searchAnPublisher = await Books.findOne({ editora: editora });
+        const searchAnPublisher = await Books.find({ editora: editora });
         res.status(200).json({
             searchAnPublisher,
-
         });
     } catch (error) {
         res.status(500).json({

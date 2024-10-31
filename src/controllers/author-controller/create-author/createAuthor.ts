@@ -1,6 +1,5 @@
 import express, { Request, Response } from 'express';
 import { Author } from '../../../models/author/author';
-
 export const addAuthor = async (req: Request, res: Response) => {
     try {
         const { nome, nacionalidade } = req.body;
@@ -13,7 +12,6 @@ export const addAuthor = async (req: Request, res: Response) => {
             nome,
             nacionalidade,
         });
-
         res.status(201).json({
             message: 'Successfully created',
             book: createAuthor,
